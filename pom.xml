@@ -231,6 +231,14 @@
             <email>cmenzel@wicketbuch.de</email>
         </developer>
     </developers>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
     <distributionManagement>
         <repository>
             <id>repo</id>
