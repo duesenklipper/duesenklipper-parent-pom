@@ -30,7 +30,27 @@
     <description>
         duesenklipper parent pom
     </description>
-
+    <url>https://github.com/duesenklipper/duesenklipper-parent-pom</url>
+    <developers>
+        <developer>
+            <name>Carl-Eric Menzel</name>
+            <email>cmenzel@wicketbuch.de</email>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
     <properties>
         <main.basedir>${project.basedir}</main.basedir>
         <license.file>${main.basedir}/LICENSE</license.file>
@@ -276,38 +296,6 @@
             </build>
         </profile>
     </profiles>
-    <developers>
-        <developer>
-            <name>Carl-Eric Menzel</name>
-            <email>cmenzel@wicketbuch.de</email>
-        </developer>
-    </developers>
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-    <repositories>
-        <repository>
-            <id>duesenklipper</id>
-            <url>https://maven.duesenklipper.de/releases</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-    </repositories>
     <scm>
         <connection>scm:git:git@github.com:duesenklipper/duesenklipper-parent-pom.git</connection>
         <url>scm:git:git@github.com:duesenklipper/duesenklipper-parent-pom.git</url>
