@@ -23,7 +23,7 @@
 
     <groupId>de.duesenklipper.maven</groupId>
     <artifactId>duesenklipper-parent</artifactId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.5</version>
     <packaging>pom</packaging>
 
     <name>duesenklipper-parent-pom</name>
