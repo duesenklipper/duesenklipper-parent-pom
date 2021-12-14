@@ -16,8 +16,9 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -58,6 +59,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
         <clirr.compare.version>1.0-SNAPSHOT</clirr.compare.version>
+        <minimum.log4j.version>2.16.0</minimum.log4j.version>
     </properties>
 
     <build>
@@ -167,6 +169,50 @@
                     <skipSystemScope>true</skipSystemScope>
                     <skipTestScope>false</skipTestScope>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>no-log4j-below-specified-version</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <fail>true</fail>
+                            <rules>
+                                <bannedDependencies>
+                                    <!-- excludes: a list of artifacts to ban. -->
+                                    <excludes>
+                                        <exclude>
+                                            org.apache.logging.log4j:log4j-api:[,${minimum.log4j.version})
+                                        </exclude>
+                                        <exclude>
+                                            org.apache.logging.log4j:log4j-core:[,${minimum.log4j.version})
+                                        </exclude>
+                                    </excludes>
+                                </bannedDependencies>
+                                <banTransitiveDependencies>
+                                    <!-- includes: specify the dependencies that will be included in the ban. -->
+                                    <includes>
+                                        <include>
+                                            org.apache.logging.log4j:log4j-api:[,${minimum.log4j.version})
+                                        </include>
+                                        <include>
+                                            org.apache.logging.log4j:log4j-core:[,${minimum.log4j.version})
+                                        </include>
+                                    </includes>
+                                    <!-- excludes: specify the dependencies that will be ignored, so not banned. -->
+                                    <excludes>
+                                        <exclude>*</exclude>
+                                    </excludes>
+                                </banTransitiveDependencies>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <pluginManagement>
@@ -380,7 +426,8 @@
     <scm>
         <connection>scm:git:git@github.com:duesenklipper/duesenklipper-parent-pom.git</connection>
         <url>scm:git:git@github.com:duesenklipper/duesenklipper-parent-pom.git</url>
-        <developerConnection>scm:git:git@github.com:duesenklipper/duesenklipper-parent-pom.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:duesenklipper/duesenklipper-parent-pom.git
+        </developerConnection>
         <tag>HEAD</tag>
     </scm>
 </project>
